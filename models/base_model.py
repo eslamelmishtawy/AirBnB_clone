@@ -43,4 +43,4 @@ class BaseModel():
     def __str__(self):
         """Print representation for instance"""
         clsname = self.__class__.__name__
-        return "\t[{}] ({}) {}".format(clsname, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(clsname, self.id, self.__dict__)
