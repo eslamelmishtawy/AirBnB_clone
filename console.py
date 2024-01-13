@@ -6,8 +6,8 @@ import cmd
 import shlex
 from models import storage
 from models.base_model import BaseModel
-
-classes = ['BaseModel']
+from models.base_model import User
+classes = ['BaseModel', 'User']
 
 
 class HBNBCommand(cmd.Cmd):
@@ -35,8 +35,8 @@ class HBNBCommand(cmd.Cmd):
         if (line[0] not in classes):
             print("** class doesn't exist **")
         else:
-            instance = BaseModel()
-            instance.save()
+            instance = eval(f"line[0]()")
+            storage.save()
             print(instance.id)
     
     def do_show(self, args):
