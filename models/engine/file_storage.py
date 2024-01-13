@@ -57,5 +57,4 @@ class FileStorage():
             with open(FileStorage.__file_path, 'r') as json_file:
                 obj = json.load(json_file)
                 for o in obj.values():
-                    del o["__class__"]
                     self.new(BaseModel(**o))
