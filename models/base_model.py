@@ -3,6 +3,7 @@
 """Module for the BaseModel"""
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel():
@@ -28,17 +29,21 @@ class BaseModel():
         self.id = str(uuid.uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
-        for key, value in kwargs.items():
-            if key == "created_at" or key == "updated_at":
-                setattr(self, key, datetime.strptime(value, tform))
-            elif key == "__class__":
-                pass
-            else:
-                setattr(self, key, value)
+        if len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    setattr(self, key, datetime.strptime(value, tform))
+                elif key == "__class__":
+                    pass
+                else:
+                    setattr(self, key, value)
+        else:
+            models.storage.new(self)
 
     def save(self):
         """Update date and time for instance"""
         self.updated_at = datetime.today()
+        models.storage.save()
 
     def to_dict(self):
         """Update dictionary of the instance"""
