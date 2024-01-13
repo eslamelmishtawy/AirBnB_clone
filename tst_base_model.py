@@ -12,3 +12,4 @@ print(model_json)
 print("JSON of my_model:")
 for key in model_json.keys():
     print("{}: ({}) - {}".format(key, type(model_json[key]), model_json[key]))
+
