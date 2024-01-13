@@ -2,15 +2,15 @@
 """
 cmd interpreter
 """
+import cmd
 
 
-class HBNBcmd:
+class HBNBcmd(cmd.Cmd):
     """
     class for air bnb clone project
     """
+    prompt = '(hbnb) '
 
-    def __init__():
-        """ init method """
 
-    if __name__ == '__main__':
-        HBNBcmd()
+if __name__ == '__main__':
+    HBNBcmd().cmdloop()
