@@ -57,4 +57,5 @@ class FileStorage():
             with open(FileStorage.__file_path, 'r') as json_file:
                 obj = json.load(json_file)
                 for o in obj.values():
-                    self.new(BaseModel(**o))
+                    cls_name = o["__class__"]
+                    self.new(eval(cls_name)(**o))
