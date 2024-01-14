@@ -20,6 +20,7 @@ class HBNBCommand(cmd.Cmd):
     class for air bnb clone project
     """
     prompt = '(hbnb) '
+
     def do_quit(self, line):
         """ handle quit """
         return True
@@ -43,9 +44,10 @@ class HBNBCommand(cmd.Cmd):
             instance = eval(f"{line[0]}()")
             storage.save()
             print(instance.id)
-    
+
     def do_show(self, args):
-        """ Prints the string representation of an instance based on the class name """
+        """ Prints the string representation of an instance
+        based on the class name """
         line = shlex.split(args)
 
         if len(line) == 0:
@@ -83,7 +85,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, args):
-        """Print the string representation of all instances or a specific class"""
+        """Print the string representation
+        of all instances or a specific class"""
         obj = storage.all()
 
         line = shlex.split(args)
@@ -129,6 +132,7 @@ class HBNBCommand(cmd.Cmd):
                 setattr(obj, name, value)
 
                 o.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
